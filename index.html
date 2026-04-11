@@ -19,6 +19,39 @@
   html{scroll-behavior:smooth}
   body{font-family:var(--font-body);color:var(--text);background:var(--off);line-height:1.6}
 
+  .modal-overlay{position:fixed;inset:0;z-index:999;background:rgba(8,80,65,0.75);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:1.5rem;transition:opacity .3s}
+  .modal-overlay.hide{opacity:0;pointer-events:none}
+  .modal-box{background:var(--white);border-radius:var(--r2);padding:2.5rem;max-width:520px;width:100%;position:relative;box-shadow:0 24px 60px rgba(0,0,0,0.2)}
+  .modal-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:50%;border:none;background:var(--gray-light);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:var(--gray);transition:background .2s}
+  .modal-close:hover{background:#e0ddd5}
+  .modal-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:.75rem}
+  .modal-title{font-family:var(--font-head);font-size:2rem;font-weight:800;letter-spacing:-1px;color:var(--text);margin-bottom:.75rem}
+  .modal-title span{color:var(--green)}
+  .modal-desc{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:1.75rem}
+  .modal-goals{display:flex;flex-direction:column;gap:.75rem;margin-bottom:2rem}
+  .modal-goal{display:flex;align-items:center;gap:1rem;padding:.875rem 1rem;background:var(--off);border-radius:var(--r);border:1px solid #e0ddd5}
+  .modal-goal-icon{font-size:1.4rem;flex-shrink:0}
+  .modal-goal-text{font-size:13px;font-weight:500;color:var(--text)}
+  .modal-btn{width:100%;padding:14px;background:var(--green);color:#fff;border:none;border-radius:100px;font-size:15px;font-weight:700;cursor:pointer;font-family:var(--font-head);transition:background .2s}
+  .modal-btn:hover{background:var(--green-dark)}
+
+  /* LANDING */
+  .landing{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--green-dark);padding:2rem;text-align:center;position:relative;overflow:hidden}
+  .landing::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(93,202,165,0.12),transparent 70%);top:-100px;left:50%;transform:translateX(-50%)}
+  .landing::after{content:'';position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(29,158,117,0.15),transparent 70%);bottom:-100px;right:-100px}
+  .landing-inner{max-width:640px;position:relative;z-index:1}
+  .landing-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green-mid);background:rgba(93,202,165,0.1);border:1px solid rgba(93,202,165,0.2);padding:6px 16px;border-radius:100px;margin-bottom:2rem}
+  .landing-logo{font-family:var(--font-head);font-size:clamp(3rem,8vw,5.5rem);font-weight:800;letter-spacing:-3px;color:#fff;line-height:1;margin-bottom:1.5rem}
+  .landing-logo span{color:var(--green-mid)}
+  .landing-desc{font-size:clamp(15px,2vw,18px);color:rgba(255,255,255,0.75);line-height:1.7;margin-bottom:3rem;max-width:520px;margin-left:auto;margin-right:auto}
+  .landing-goals{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+  .landing-goal{display:flex;align-items:center;gap:.75rem;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:10px 20px}
+  .landing-goal-icon{font-size:1.1rem}
+  .landing-goal-text{font-size:13px;font-weight:500;color:rgba(255,255,255,0.9)}
+  .landing-btn{display:inline-block;background:var(--green);color:#fff;padding:16px 40px;border-radius:100px;font-size:16px;font-weight:700;font-family:var(--font-head);border:none;cursor:pointer;transition:all .2s;letter-spacing:-.3px}
+  .landing-btn:hover{background:var(--green-mid);transform:translateY(-2px)}
+  .landing-scroll{margin-top:2rem;font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:1px;text-transform:uppercase}
+
   nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(249,248,245,0.96);backdrop-filter:blur(10px);border-bottom:1px solid #e0ddd5;padding:0 2rem}
   .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;height:64px;gap:2rem}
   .nav-logo{font-family:var(--font-head);font-size:18px;font-weight:800;color:var(--green-dark);letter-spacing:-0.5px;flex-shrink:0;margin-right:auto}
@@ -211,7 +244,7 @@
 </head>
 <body>
 
-<nav>
+<nav style="display:none">
   <div class="nav-inner">
     <div class="nav-logo">Agro<span>Tech</span></div>
     <div class="nav-tabs">
@@ -233,6 +266,27 @@
     </ul>
   </div>
 </nav>
+
+<!-- LANDING PAGE -->
+<div id="landing">
+  <section class="landing">
+    <div class="landing-inner">
+      <div class="landing-tag">Trabalho de Conclusão de Curso · 2026</div>
+      <div class="landing-logo">Agro<span>Tech</span></div>
+      <p class="landing-desc">Sistema de hibridização leve P1 para tratores agrícolas que reduz a reserva de torque do motor diesel com assistência elétrica inteligente — mais eficiência, menor consumo e mesma produtividade no campo.</p>
+      <div class="landing-goals">
+        <div class="landing-goal"><div class="landing-goal-icon">⚡</div><div class="landing-goal-text">Resposta instantânea a picos de carga</div></div>
+        <div class="landing-goal"><div class="landing-goal-icon">⛽</div><div class="landing-goal-text">Redução de até 50% na reserva de torque</div></div>
+        <div class="landing-goal"><div class="landing-goal-icon">🌿</div><div class="landing-goal-text">Menor consumo e emissões</div></div>
+      </div>
+      <button class="landing-btn" onclick="enterSite()">Explorar Projeto</button>
+      <div class="landing-scroll">TCC · Engenharia · 2026</div>
+    </div>
+  </section>
+</div>
+
+<!-- CONTEÚDO PRINCIPAL (oculto até clicar) -->
+<div id="main-content" style="display:none">
 
 <!-- ABA INTRODUÇÃO -->
 <div id="tab-intro" class="tab-content active">
@@ -560,6 +614,8 @@
 
 </div>
 
+</div><!-- /main-content -->
+
 <footer>
   <div class="container">
     <h3>AgroTech</h3>
@@ -575,6 +631,12 @@
 </footer>
 
 <script>
+function enterSite() {
+  document.getElementById('landing').style.display = 'none';
+  document.getElementById('main-content').style.display = 'block';
+  document.querySelector('nav').style.display = 'block';
+  window.scrollTo({ top: 0 });
+}
 function switchTab(tab, btn) {
   document.querySelectorAll('.tab-content').forEach(el => {
     el.classList.remove('active');
