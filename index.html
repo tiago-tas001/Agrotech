@@ -182,6 +182,27 @@
   .target-desc p{font-size:15px;color:var(--text2);line-height:1.7;margin-bottom:1rem}
   .ref-pill{display:inline-block;font-size:11px;background:rgba(186,117,23,0.12);border:1px solid rgba(186,117,23,0.2);padding:4px 10px;border-radius:100px;color:var(--amber);margin:3px;font-weight:500}
 
+  /* GRÁFICO TORQUE */
+  .torque-chart{background:var(--white);border-radius:var(--r2);padding:2rem;border:1px solid rgba(186,117,23,0.2);margin-top:2rem}
+  .torque-chart-title{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--amber);margin-bottom:1.5rem}
+  .torque-bar-group{display:flex;flex-direction:column;gap:1.25rem}
+  .torque-bar-item{display:flex;flex-direction:column;gap:6px}
+  .torque-bar-header{display:flex;justify-content:space-between;align-items:center}
+  .torque-bar-name{font-size:13px;font-weight:600;color:var(--text)}
+  .torque-bar-pct{font-family:var(--font-head);font-size:1.4rem;font-weight:800}
+  .torque-bar-track{height:36px;background:#f0ede6;border-radius:8px;overflow:hidden;position:relative}
+  .torque-bar-fill{height:100%;border-radius:8px;width:0;transition:width 1.4s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;padding-left:12px}
+  .torque-bar-fill span{font-size:11px;font-weight:600;color:#fff;white-space:nowrap}
+  .torque-bar-fill.original{background:linear-gradient(90deg,#D85A30,#E8825F)}
+  .torque-bar-fill.hybrid{background:linear-gradient(90deg,#085041,#1D9E75)}
+  .torque-reduction{display:flex;align-items:center;justify-content:center;gap:.75rem;margin-top:1.5rem;padding:1rem;background:var(--green-light);border-radius:var(--r);border:1px solid rgba(29,158,117,0.2)}
+  .torque-reduction-num{font-family:var(--font-head);font-size:2rem;font-weight:800;color:var(--green-dark)}
+  .torque-reduction-text{font-size:13px;color:var(--green-dark);font-weight:500}
+
+  /* CONTADOR */
+  .counter{display:inline-block}
+  .ctx-num .counter{font-family:var(--font-head);font-size:2.5rem;font-weight:800;color:var(--green);letter-spacing:-2px}
+
   .cost-layout{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;margin-top:3rem;align-items:start}
   .cost-table{background:var(--white);border-radius:var(--r2);overflow:hidden;border:1px solid #e0ddd5}
   .cost-row{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--gray-light)}
@@ -231,11 +252,34 @@
   footer h3{font-family:var(--font-head);font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:.5rem}
   footer p{font-size:13px;line-height:1.7}
 
+  /* ANIMAÇÕES DE ENTRADA */
+  .fade-in{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+  .fade-in.visible{opacity:1;transform:translateY(0)}
+  .fade-in-delay-1{transition-delay:.1s}
+  .fade-in-delay-2{transition-delay:.2s}
+  .fade-in-delay-3{transition-delay:.3s}
+  .fade-in-delay-4{transition-delay:.4s}
+  .fade-in-delay-5{transition-delay:.5s}
+
+  /* HAMBURGER MOBILE */
+  .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:transparent}
+  .nav-hamburger span{width:22px;height:2px;background:var(--green-dark);border-radius:2px;transition:all .3s}
+  .nav-hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+  .nav-hamburger.open span:nth-child(2){opacity:0}
+  .nav-hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+  .nav-mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(249,248,245,0.98);backdrop-filter:blur(10px);border-bottom:1px solid #e0ddd5;padding:1rem 2rem;z-index:99;flex-direction:column;gap:.5rem}
+  .nav-mobile-menu.open{display:flex}
+  .nav-mobile-menu a{font-size:14px;font-weight:500;color:var(--text);text-decoration:none;padding:.75rem 0;border-bottom:1px solid #e8e5de}
+  .nav-mobile-menu a:last-child{border-bottom:none}
+  .nav-mobile-tabs{display:flex;gap:6px;margin-bottom:.5rem}
+
   @media(max-width:900px){
     .hero-inner,.problem-layout,.sol-grid,.target-layout,.cost-layout,.context-grid,.gc-grid,.vant-grid{grid-template-columns:1fr}
     .bench-grid,.comp-grid,.team-grid{grid-template-columns:1fr 1fr}
     .hero-card{display:none}
     .nav-sub{display:none}
+    .nav-hamburger{display:flex}
+    .nav-tabs{display:none}
   }
   @media(max-width:600px){
     .bench-grid,.comp-grid,.team-grid,.target-numbers,.stats-row,.bmc-grid,.gc-grid{grid-template-columns:1fr}
@@ -243,12 +287,14 @@
     .nav-tab{padding:7px 14px;font-size:12px}
   }
 </style>
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23085041'/><text y='68' x='50' text-anchor='middle' font-size='52' font-family='Arial Black,sans-serif' font-weight='900' fill='%231D9E75'>AG</text></svg>">
 </head>
 <body>
 
 <nav style="display:none">
   <div class="nav-inner">
-    <div class="nav-logo">Agro<span>Tech</span></div>
+    <div class="nav-logo"><img src="logo.png" alt="AgroTech" style="height:36px;width:auto"></div>
     <div class="nav-tabs">
       <button class="nav-tab active" onclick="switchTab('intro',this)">Introdução</button>
       <button class="nav-tab" onclick="switchTab('tecnico',this)">Técnico</button>
@@ -266,15 +312,35 @@
       <li><a href="#custos">Custos</a></li>
       <li><a href="#fmea">FMEA</a></li>
     </ul>
+    <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<div class="nav-mobile-menu" id="mobile-menu">
+  <div class="nav-mobile-tabs">
+    <button class="nav-tab active" onclick="switchTab('intro',this);toggleMenu()">Introdução</button>
+    <button class="nav-tab" onclick="switchTab('tecnico',this);toggleMenu()">Técnico</button>
+  </div>
+  <a href="#contexto" onclick="toggleMenu()">Contexto</a>
+  <a href="#problema" onclick="toggleMenu()">Problema</a>
+  <a href="#proposta" onclick="toggleMenu()">Proposta</a>
+  <a href="#equipe" onclick="toggleMenu()">Equipe</a>
+  <a href="#specs" onclick="toggleMenu()">Especificações</a>
+  <a href="#benchmarking" onclick="toggleMenu()">Benchmarking</a>
+  <a href="#target" onclick="toggleMenu()">Target</a>
+  <a href="#custos" onclick="toggleMenu()">Custos</a>
+  <a href="#fmea" onclick="toggleMenu()">FMEA</a>
+</div>
 
 <!-- LANDING PAGE -->
 <div id="landing">
   <section class="landing">
     <div class="landing-inner">
-      <div class="landing-tag">Trabalho de Conclusão de Curso · 2026</div>
-      <div class="landing-logo">Agro<span>Tech</span></div>
+      <div class="landing-tag">Centro Universitário FEI · TCC 2026</div>
+      <img src="logo.png" alt="AgroTech" style="height:80px;width:auto;margin-bottom:1.5rem;filter:brightness(0) invert(1)">
+      <div class="landing-logo" style="display:none">Agro<span>Tech</span></div>
       <p class="landing-desc">Sistema de hibridização leve P1 para tratores agrícolas que reduz a reserva de torque do motor diesel com assistência elétrica inteligente — mais eficiência, menor consumo e mesma produtividade no campo.</p>
       <div class="landing-goals">
         <div class="landing-goal"><div class="landing-goal-icon">⚡</div><div class="landing-goal-text">Resposta instantânea a picos de carga</div></div>
@@ -296,7 +362,7 @@
   <section class="hero">
     <div class="hero-inner">
       <div>
-        <div class="hero-tag">Trabalho de Conclusão de Curso · 2026</div>
+        <div class="hero-tag">Centro Universitário FEI · TCC 2026</div>
         <h1>Hibridização <span>Leve P1</span><br>para Tratores<br>Agrícolas</h1>
         <p class="hero-sub">Reduzindo a reserva de torque do motor diesel com assistência elétrica inteligente — mais eficiência, menor consumo, mesma produtividade no campo.</p>
         <div class="hero-ctas">
@@ -327,12 +393,12 @@
       <h2 class="section-title">O Agro Brasileiro Precisa de Inovação</h2>
       <p class="section-sub">O agronegócio é o motor da economia brasileira. A modernização de seus equipamentos tem impacto direto na produtividade, custo operacional e emissões de CO₂.</p>
       <div class="context-grid">
-        <div class="ctx-card"><div class="ctx-icon">🌾</div><div class="ctx-num">26,6%</div><div class="ctx-desc">do PIB brasileiro vem do agronegócio (CEPEA/Esalq)</div></div>
-        <div class="ctx-card"><div class="ctx-icon">👷</div><div class="ctx-num">28M</div><div class="ctx-desc">de brasileiros empregados no setor em 2024 (CNA/CEPEA)</div></div>
-        <div class="ctx-card"><div class="ctx-icon">🚜</div><div class="ctx-num">1,35M</div><div class="ctx-desc">de tratores em operação no Brasil em 2025 (IBGE/ANFAVEA)</div></div>
-        <div class="ctx-card"><div class="ctx-icon">📅</div><div class="ctx-num">+20 anos</div><div class="ctx-desc">vida média da frota — oportunidade de retrofit tecnológico</div></div>
-        <div class="ctx-card"><div class="ctx-icon">⏱️</div><div class="ctx-num">12–16h</div><div class="ctx-desc">de operação diária em picos de safra com alta demanda de torque</div></div>
-        <div class="ctx-card"><div class="ctx-icon">🌍</div><div class="ctx-num">800M</div><div class="ctx-desc">de pessoas alimentadas pelo Brasil (Embrapa)</div></div>
+        <div class="ctx-card fade-in fade-in-delay-1"><div class="ctx-icon">🌾</div><div class="ctx-num"><span class="counter" data-target="26.6" data-suffix="%">0%</span></div><div class="ctx-desc">do PIB brasileiro vem do agronegócio (CEPEA/Esalq)</div></div>
+        <div class="ctx-card fade-in fade-in-delay-2"><div class="ctx-icon">👷</div><div class="ctx-num"><span class="counter" data-target="28" data-suffix="M">0M</span></div><div class="ctx-desc">de brasileiros empregados no setor em 2024 (CNA/CEPEA)</div></div>
+        <div class="ctx-card fade-in fade-in-delay-3"><div class="ctx-icon">🚜</div><div class="ctx-num"><span class="counter" data-target="1.35" data-suffix="M">0M</span></div><div class="ctx-desc">de tratores em operação no Brasil em 2025 (IBGE/ANFAVEA)</div></div>
+        <div class="ctx-card fade-in fade-in-delay-4"><div class="ctx-icon">📅</div><div class="ctx-num">+20 anos</div><div class="ctx-desc">vida média da frota — oportunidade de retrofit tecnológico</div></div>
+        <div class="ctx-card fade-in fade-in-delay-5"><div class="ctx-icon">⏱️</div><div class="ctx-num">12–16h</div><div class="ctx-desc">de operação diária em picos de safra com alta demanda de torque</div></div>
+        <div class="ctx-card fade-in"><div class="ctx-icon">🌍</div><div class="ctx-num"><span class="counter" data-target="800" data-suffix="M">0M</span></div><div class="ctx-desc">de pessoas alimentadas pelo Brasil (Embrapa)</div></div>
       </div>
     </div>
   </section>
@@ -377,12 +443,12 @@
       <h2 class="section-title">Assistência Elétrica Inteligente — Topologia P1</h2>
       <p class="section-sub">Em vez de sobredimensionar o motor térmico para o "pior caso", acoplamos uma máquina elétrica ao virabrequim que responde instantaneamente apenas quando necessário.</p>
       <div class="vant-grid">
-        <div class="vant-card"><div class="vant-icon">⚡</div><h3>Resposta Instantânea</h3><p>O motor elétrico P1 entrega torque em milissegundos, muito mais rápido que a resposta do diesel via combustão e turbo.</p></div>
-        <div class="vant-card"><div class="vant-icon">⛽</div><h3>Menor Consumo</h3><p>Com o diesel liberado dos picos transitórios, ele opera mais próximo da faixa de menor BSFC — região de máxima eficiência.</p></div>
-        <div class="vant-card"><div class="vant-icon">🌿</div><h3>Menos Emissões</h3><p>Reduzir a reserva de torque e o consumo médio impacta diretamente nas emissões de CO₂ e poluentes por hora trabalhada.</p></div>
-        <div class="vant-card"><div class="vant-icon">🔧</div><h3>Não Invasivo</h3><p>Topologia P1 preserva a arquitetura original do trator — sem alterar transmissão, eixos ou rodas. Ideal para retrofit.</p></div>
-        <div class="vant-card"><div class="vant-icon">🚜</div><h3>Mesma Produtividade</h3><p>A força tratativa é mantida ou aumentada — o operador não percebe diferença na capacidade de trabalho no campo.</p></div>
-        <div class="vant-card"><div class="vant-icon">🔋</div><h3>Bateria LFP Durável</h3><p>Células lítio-ferro-fosfato com alta estabilidade térmica, longa vida útil e segurança para operação rural severa.</p></div>
+        <div class="vant-card fade-in fade-in-delay-1"><div class="vant-icon">⚡</div><h3>Resposta Instantânea</h3><p>O motor elétrico P1 entrega torque em milissegundos, muito mais rápido que a resposta do diesel via combustão e turbo.</p></div>
+        <div class="vant-card fade-in fade-in-delay-2"><div class="vant-icon">⛽</div><h3>Menor Consumo</h3><p>Com o diesel liberado dos picos transitórios, ele opera mais próximo da faixa de menor BSFC — região de máxima eficiência.</p></div>
+        <div class="vant-card fade-in fade-in-delay-3"><div class="vant-icon">🌿</div><h3>Menos Emissões</h3><p>Reduzir a reserva de torque e o consumo médio impacta diretamente nas emissões de CO₂ e poluentes por hora trabalhada.</p></div>
+        <div class="vant-card fade-in fade-in-delay-1"><div class="vant-icon">🔧</div><h3>Não Invasivo</h3><p>Topologia P1 preserva a arquitetura original do trator — sem alterar transmissão, eixos ou rodas. Ideal para retrofit.</p></div>
+        <div class="vant-card fade-in fade-in-delay-2"><div class="vant-icon">🚜</div><h3>Mesma Produtividade</h3><p>A força tratativa é mantida ou aumentada — o operador não percebe diferença na capacidade de trabalho no campo.</p></div>
+        <div class="vant-card fade-in fade-in-delay-3"><div class="vant-icon">🔋</div><h3>Bateria LFP Durável</h3><p>Células lítio-ferro-fosfato com alta estabilidade térmica, longa vida útil e segurança para operação rural severa.</p></div>
       </div>
 
       <div style="margin-top:4rem">
@@ -419,11 +485,11 @@
       <h2 class="section-title">Equipe do Projeto</h2>
       <p class="section-sub">Grupo multidisciplinar com especialistas em pesquisa, desenvolvimento, CAD/simulação e ferramentas de projeto.</p>
       <div class="team-grid">
-        <div class="team-card"><div class="team-avatar">JG</div><div class="team-name">João Vitor Bertani Gibrail</div><div class="team-role">Líder do Projeto</div><a href="https://www.linkedin.com/in/joão-vitor-gibrail" target="_blank" class="team-linkedin">LinkedIn →</a></div>
-        <div class="team-card"><div class="team-avatar">AT</div><div class="team-name">Ana Júlia Bastos Trizzi</div><div class="team-role">Pesquisa e Desenvolvimento</div><a href="https://www.linkedin.com/in/anajuliabastostrizzi" target="_blank" class="team-linkedin">LinkedIn →</a></div>
-        <div class="team-card"><div class="team-avatar">TS</div><div class="team-name">Tiago Andrade Santos</div><div class="team-role">Ferramentas de Projeto</div><a href="https://www.linkedin.com/in/tiago-andrade" target="_blank" class="team-linkedin">LinkedIn →</a></div>
-        <div class="team-card"><div class="team-avatar">WP</div><div class="team-name">William José Piva D'Assunção</div><div class="team-role">Pesquisa e Desenvolvimento</div><a href="https://www.linkedin.com/in/william-piva" target="_blank" class="team-linkedin">LinkedIn →</a></div>
-        <div class="team-card"><div class="team-avatar">JU</div><div class="team-name">João Vitor Uriarte</div><div class="team-role">CAD e Simulação</div><a href="https://www.linkedin.com/in/jo%C3%A3o-vitor-uriarte" target="_blank" class="team-linkedin">LinkedIn →</a></div>
+        <div class="team-card fade-in fade-in-delay-1"><div class="team-avatar">JG</div><div class="team-name">João Vitor Bertani Gibrail</div><div class="team-role">Líder do Projeto</div><a href="https://www.linkedin.com/in/jo%C3%A3o-vitor-gibrail-aab182252" target="_blank" class="team-linkedin">LinkedIn →</a></div>
+        <div class="team-card fade-in fade-in-delay-2"><div class="team-avatar">AT</div><div class="team-name">Ana Júlia Bastos Trizzi</div><div class="team-role">Pesquisa e Desenvolvimento</div><a href="https://www.linkedin.com/in/anajuliabastostrizzi" target="_blank" class="team-linkedin">LinkedIn →</a></div>
+        <div class="team-card fade-in fade-in-delay-3"><div class="team-avatar">TS</div><div class="team-name">Tiago Andrade Santos</div><div class="team-role">Ferramentas de Projeto</div><a href="https://www.linkedin.com/in/tiago-andrade-484a34254" target="_blank" class="team-linkedin">LinkedIn →</a></div>
+        <div class="team-card fade-in fade-in-delay-4"><div class="team-avatar">WP</div><div class="team-name">William José Piva D'Assunção</div><div class="team-role">Pesquisa e Desenvolvimento</div><a href="https://www.linkedin.com/in/william-piva-8b0624192" target="_blank" class="team-linkedin">LinkedIn →</a></div>
+        <div class="team-card fade-in fade-in-delay-5"><div class="team-avatar">JU</div><div class="team-name">João Vitor Uriarte</div><div class="team-role">CAD e Simulação</div><a href="https://www.linkedin.com/in/jo%C3%A3o-vitor-uriarte-b80682385" target="_blank" class="team-linkedin">LinkedIn →</a></div>
       </div>
       <div style="margin-top:1.5rem;text-align:center">
         <div class="team-card" style="display:inline-block;min-width:200px">
@@ -508,12 +574,12 @@
       <h2 class="section-title">Benchmarking — Por que a topologia P1?</h2>
       <p class="section-sub">Avaliamos seis tecnologias candidatas. A matriz de decisão apontou a eletrificação P1 como a melhor resposta ao problema de transientes de carga.</p>
       <div class="bench-grid">
-        <div class="bench-card"><h3>Turbo Geometria Variável</h3><div class="bench-type">Melhoria no motor térmico</div><div class="bench-pros-label">Vantagens</div><div class="bench-pro">Menor turbo lag</div><div class="bench-pro">Alto torque em baixa rotação</div><div class="bench-cons-label">Desvantagens</div><div class="bench-con">Sensível à sujeira e temperatura</div><div class="bench-con">Manutenção complexa e cara</div></div>
-        <div class="bench-card"><h3>Power Boost</h3><div class="bench-type">Sobrepressão momentânea</div><div class="bench-pros-label">Vantagens</div><div class="bench-pro">Resposta rápida</div><div class="bench-pro">Sem alteração permanente</div><div class="bench-cons-label">Desvantagens</div><div class="bench-con">Uso muito limitado</div><div class="bench-con">Aumento temporário de consumo</div></div>
-        <div class="bench-card"><h3>CVT Toroidal</h3><div class="bench-type">Transmissão variável contínua</div><div class="bench-pros-label">Vantagens</div><div class="bench-pro">Motor em torque ideal</div><div class="bench-pro">Alta eficiência global</div><div class="bench-cons-label">Desvantagens</div><div class="bench-con">Alta complexidade e custo</div><div class="bench-con">Limite de torque transmissível</div></div>
-        <div class="bench-card"><h3>Eletrificação P0</h3><div class="bench-type">Motor-gerador por correia</div><div class="bench-pros-label">Vantagens</div><div class="bench-pro">Fácil adaptação</div><div class="bench-pro">Recuperação de energia</div><div class="bench-cons-label">Desvantagens</div><div class="bench-con">Torque limitado pela correia</div><div class="bench-con">Ineficiente em alta carga</div></div>
-        <div class="bench-card selected"><div class="bench-badge">✓ SELECIONADO</div><h3>Eletrificação P1</h3><div class="bench-type">Motor-gerador no virabrequim</div><div class="bench-pros-label">Vantagens</div><div class="bench-pro">Resposta de torque imediata</div><div class="bench-pro">Integração simples e compacta</div><div class="bench-pro">Recuperação de energia</div><div class="bench-cons-label">Limitações gerenciadas</div><div class="bench-con">Torque limitado (compensado por controle)</div></div>
-        <div class="bench-card"><h3>Eletrificação P4</h3><div class="bench-type">Motor como gerador (série)</div><div class="bench-pros-label">Vantagens</div><div class="bench-pro">Torque instantâneo nas rodas</div><div class="bench-pro">Controle preciso de tração</div><div class="bench-cons-label">Desvantagens</div><div class="bench-con">Alta complexidade e grandes baterias</div><div class="bench-con">Gestão energética crítica</div></div>
+        <div class="bench-card fade-in fade-in-delay-1"><h3>Turbo Geometria Variável</h3><div class="bench-type">Melhoria no motor térmico</div><div class="bench-pros-label">Vantagens</div><div class="bench-pro">Menor turbo lag</div><div class="bench-pro">Alto torque em baixa rotação</div><div class="bench-cons-label">Desvantagens</div><div class="bench-con">Sensível à sujeira e temperatura</div><div class="bench-con">Manutenção complexa e cara</div></div>
+        <div class="bench-card fade-in fade-in-delay-2"><h3>Power Boost</h3><div class="bench-type">Sobrepressão momentânea</div><div class="bench-pros-label">Vantagens</div><div class="bench-pro">Resposta rápida</div><div class="bench-pro">Sem alteração permanente</div><div class="bench-cons-label">Desvantagens</div><div class="bench-con">Uso muito limitado</div><div class="bench-con">Aumento temporário de consumo</div></div>
+        <div class="bench-card fade-in fade-in-delay-3"><h3>CVT Toroidal</h3><div class="bench-type">Transmissão variável contínua</div><div class="bench-pros-label">Vantagens</div><div class="bench-pro">Motor em torque ideal</div><div class="bench-pro">Alta eficiência global</div><div class="bench-cons-label">Desvantagens</div><div class="bench-con">Alta complexidade e custo</div><div class="bench-con">Limite de torque transmissível</div></div>
+        <div class="bench-card fade-in fade-in-delay-1"><h3>Eletrificação P0</h3><div class="bench-type">Motor-gerador por correia</div><div class="bench-pros-label">Vantagens</div><div class="bench-pro">Fácil adaptação</div><div class="bench-pro">Recuperação de energia</div><div class="bench-cons-label">Desvantagens</div><div class="bench-con">Torque limitado pela correia</div><div class="bench-con">Ineficiente em alta carga</div></div>
+        <div class="bench-card selected fade-in fade-in-delay-2"><div class="bench-badge">✓ SELECIONADO</div><h3>Eletrificação P1</h3><div class="bench-type">Motor-gerador no virabrequim</div><div class="bench-pros-label">Vantagens</div><div class="bench-pro">Resposta de torque imediata</div><div class="bench-pro">Integração simples e compacta</div><div class="bench-pro">Recuperação de energia</div><div class="bench-cons-label">Limitações gerenciadas</div><div class="bench-con">Torque limitado (compensado por controle)</div></div>
+        <div class="bench-card fade-in fade-in-delay-3"><h3>Eletrificação P4</h3><div class="bench-type">Motor como gerador (série)</div><div class="bench-pros-label">Vantagens</div><div class="bench-pro">Torque instantâneo nas rodas</div><div class="bench-pro">Controle preciso de tração</div><div class="bench-cons-label">Desvantagens</div><div class="bench-con">Alta complexidade e grandes baterias</div><div class="bench-con">Gestão energética crítica</div></div>
       </div>
     </div>
   </section>
@@ -538,6 +604,33 @@
           <div style="margin-top:1.5rem;background:rgba(186,117,23,0.08);border-radius:var(--r);padding:1.25rem;border:1px solid rgba(186,117,23,0.2)">
             <div style="font-size:12px;font-weight:700;color:var(--amber);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.5px">Validação via simulação</div>
             <div style="font-size:13px;color:var(--text2);line-height:1.5">AVL Cruise M (powertrain) + MATLAB/Simulink (controle) para avaliar redução de amplitude das quedas de rotação em ciclos de aração.</div>
+          </div>
+          <div class="torque-chart fade-in">
+            <div class="torque-chart-title">Comparativo de Reserva de Torque</div>
+            <div class="torque-bar-group">
+              <div class="torque-bar-item">
+                <div class="torque-bar-header">
+                  <span class="torque-bar-name">Sistema Original (Diesel)</span>
+                  <span class="torque-bar-pct" style="color:#D85A30">25–30%</span>
+                </div>
+                <div class="torque-bar-track">
+                  <div class="torque-bar-fill original" data-width="30"><span>Motor sobredimensionado</span></div>
+                </div>
+              </div>
+              <div class="torque-bar-item">
+                <div class="torque-bar-header">
+                  <span class="torque-bar-name">Sistema Híbrido P1</span>
+                  <span class="torque-bar-pct" style="color:var(--green)">~13–15%</span>
+                </div>
+                <div class="torque-bar-track">
+                  <div class="torque-bar-fill hybrid" data-width="14"><span>Motor otimizado + assistência elétrica</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="torque-reduction">
+              <div class="torque-reduction-num">~50%</div>
+              <div class="torque-reduction-text">de redução na reserva de torque<br>mantendo a força tratativa</div>
+            </div>
           </div>
         </div>
       </div>
@@ -616,8 +709,8 @@
 
 <footer>
   <div class="container">
-    <h3>AgroTech</h3>
-    <p style="margin-top:.5rem">Trabalho de Conclusão de Curso · 2026<br>Reduzindo a reserva de torque do motor diesel com assistência elétrica inteligente</p>
+    <img src="logo.png" alt="AgroTech" style="height:48px;width:auto;margin-bottom:1rem;filter:brightness(0) invert(1);opacity:.9">
+    <p style="margin-top:.5rem">Centro Universitário FEI · Trabalho de Conclusão de Curso · 2026<br>Reduzindo a reserva de torque do motor diesel com assistência elétrica inteligente</p>
     <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.15);font-size:11px;color:rgba(255,255,255,0.4)">
       João Vitor Bertani Gibrail (Líder) · Ana Júlia Bastos Trizzi · Tiago Andrade Santos · William José Piva D'Assunção · João Vitor Uriarte<br>
       Orientador: Cléber Willian Gomes
@@ -634,7 +727,16 @@ function enterSite() {
   document.getElementById('main-content').style.display = 'block';
   document.querySelector('nav').style.display = 'block';
   window.scrollTo({ top: 0 });
+  initObserver();
 }
+
+function toggleMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const btn = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+
 function switchTab(tab, btn) {
   document.querySelectorAll('.tab-content').forEach(el => {
     el.classList.remove('active');
@@ -647,16 +749,76 @@ function switchTab(tab, btn) {
   target.classList.add('active');
   btn.classList.add('active');
   document.getElementById('sub-' + tab).style.display = 'flex';
-  setTimeout(() => { target.style.opacity = '1'; }, 10);
+  setTimeout(() => { target.style.opacity = '1'; initObserver(); }, 10);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+function animateCounter(el) {
+  const target = parseFloat(el.dataset.target);
+  const suffix = el.dataset.suffix || '';
+  const duration = 1800;
+  const start = performance.now();
+  function update(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    const current = target * ease;
+    const decimals = target % 1 !== 0 ? 1 : 0;
+    el.textContent = current.toFixed(decimals).replace('.', ',') + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+    else el.textContent = target.toFixed(decimals).replace('.', ',') + suffix;
+  }
+  requestAnimationFrame(update);
+}
+
+function animateTorqueBars() {
+  document.querySelectorAll('.torque-bar-fill').forEach(bar => {
+    const w = bar.dataset.width;
+    setTimeout(() => { bar.style.width = w + '%'; }, 200);
+  });
+}
+
+function initObserver() {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        e.target.querySelectorAll('.counter').forEach(c => animateCounter(c));
+        if (e.target.querySelector('.torque-bar-fill')) animateTorqueBars();
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  const counterObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.counter').forEach(c => animateCounter(c));
+        counterObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.ctx-card').forEach(el => counterObserver.observe(el));
+
+  const torqueObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { animateTorqueBars(); torqueObserver.unobserve(e.target); }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.torque-chart').forEach(el => torqueObserver.observe(el));
+}
+
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault();
     const t = document.querySelector(a.getAttribute('href'));
     if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const menu = document.getElementById('mobile-menu');
+    if (menu.classList.contains('open')) toggleMenu();
   });
 });
+
 document.getElementById('tab-intro').style.opacity = '1';
 </script>
 </body>
