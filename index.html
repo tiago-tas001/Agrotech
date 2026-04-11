@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AgroTech – Hibridização Leve P1 em Tratores Agrícolas</title>
+<meta name="description" content="Sistema de hibridização leve P1 para tratores agrícolas que reduz a reserva de torque do motor diesel com assistência elétrica inteligente. TCC 2026 – Centro Universitário FEI.">
+<meta name="keywords" content="AgroTech, hibridização leve, trator agrícola, P1, reserva de torque, motor diesel, eletrificação, TCC, FEI">
+<meta name="author" content="João Vitor Bertani Gibrail, Ana Júlia Bastos Trizzi, Tiago Andrade Santos, William José Piva D'Assunção, João Vitor Uriarte">
+<meta property="og:title" content="AgroTech – Hibridização Leve P1 para Tratores Agrícolas">
+<meta property="og:description" content="Reduzindo a reserva de torque do motor diesel com assistência elétrica inteligente. TCC 2026 – Centro Universitário FEI.">
+<meta property="og:image" content="logo.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AgroTech – Hibridização Leve P1 para Tratores Agrícolas">
+<meta name="twitter:description" content="Reduzindo a reserva de torque do motor diesel com assistência elétrica inteligente.">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -252,6 +262,24 @@
   footer h3{font-family:var(--font-head);font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:.5rem}
   footer p{font-size:13px;line-height:1.7}
 
+  /* VOLTAR AO TOPO */
+  .back-top{position:fixed;bottom:2rem;right:2rem;width:44px;height:44px;border-radius:50%;background:var(--green);color:#fff;border:none;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(29,158,117,0.4);opacity:0;transform:translateY(10px);transition:all .3s;z-index:200}
+  .back-top.visible{opacity:1;transform:translateY(0)}
+  .back-top:hover{background:var(--green-dark);transform:translateY(-2px)}
+
+  /* NORMAS */
+  .normas-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+  .norma-card{background:var(--white);border-radius:var(--r);padding:1.25rem 1.5rem;border:1px solid #e0ddd5;border-left:3px solid var(--green);display:flex;flex-direction:column;gap:4px}
+  .norma-code{font-size:12px;font-weight:700;color:var(--green);letter-spacing:.5px}
+  .norma-desc{font-size:13px;color:var(--text2);line-height:1.5}
+
+  /* RESULTADOS */
+  .result-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2rem}
+  .result-card{background:var(--white);border-radius:var(--r2);padding:1.75rem;border:1px solid #e0ddd5;text-align:center}
+  .result-icon{font-size:2rem;margin-bottom:.75rem}
+  .result-card h3{font-family:var(--font-head);font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.5rem}
+  .result-card p{font-size:13px;color:var(--text2);line-height:1.6}
+
   /* ANIMAÇÕES DE ENTRADA */
   .fade-in{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
   .fade-in.visible{opacity:1;transform:translateY(0)}
@@ -275,7 +303,7 @@
 
   @media(max-width:900px){
     .hero-inner,.problem-layout,.sol-grid,.target-layout,.cost-layout,.context-grid,.gc-grid,.vant-grid{grid-template-columns:1fr}
-    .bench-grid,.comp-grid,.team-grid{grid-template-columns:1fr 1fr}
+    .bench-grid,.comp-grid,.team-grid,.result-grid{grid-template-columns:1fr 1fr}
     .hero-card{display:none}
     .nav-sub{display:none}
     .nav-hamburger{display:flex}
@@ -303,6 +331,8 @@
       <li><a href="#contexto">Contexto</a></li>
       <li><a href="#problema">Problema</a></li>
       <li><a href="#proposta">Proposta</a></li>
+      <li><a href="#resultados">Resultados</a></li>
+      <li><a href="#golden">Golden Circle</a></li>
       <li><a href="#equipe">Equipe</a></li>
     </ul>
     <ul class="nav-sub" id="sub-tecnico" style="display:none">
@@ -358,30 +388,25 @@
 <!-- ABA INTRODUÇÃO -->
 <div id="tab-intro" class="tab-content active">
 
-  <section class="hero">
-    <div class="hero-inner">
-      <div>
-        <div class="hero-tag">Centro Universitário FEI · TCC 2026</div>
-        <h1>Hibridização <span>Leve P1</span><br>para Tratores<br>Agrícolas</h1>
-        <p class="hero-sub">Reduzindo a reserva de torque do motor diesel com assistência elétrica inteligente — mais eficiência, menor consumo, mesma produtividade no campo.</p>
-        <div class="hero-ctas">
-          <button class="btn btn-primary" onclick="switchTab('tecnico',document.querySelectorAll('.nav-tab')[1])">Ver Parte Técnica</button>
-          <a href="#proposta" class="btn btn-outline">Nossa Proposta</a>
-        </div>
-      </div>
-      <div class="hero-card">
-        <div class="hero-card-title">Sistema Proposto — Topologia P1</div>
-        <div class="p-row"><div class="p-node active">Motor Diesel</div><div class="p-arrow">⚡</div><div class="p-node active">Motor Elétrico P1</div></div>
-        <div class="p-hint">acoplado ao virabrequim</div>
-        <div class="p-row"><div class="p-node" style="flex:2">Transmissão</div><div class="p-arrow">→</div><div class="p-node">Eixo / PTO</div></div>
-        <div class="p-hint">força motriz combinada</div>
-        <div class="p-row"><div class="p-node">Bateria LFP<br><small style="font-size:9px;font-weight:400">300V</small></div><div class="p-arrow">→</div><div class="p-node">Inversor<br><small style="font-size:9px;font-weight:400">15kW</small></div><div class="p-arrow">→</div><div class="p-node active">ECU<br><small style="font-size:9px;font-weight:400">Controle</small></div></div>
-        <div class="stats-row">
-          <div class="stat-box"><div class="stat-val">45</div><div class="stat-label">Nm torque assistivo</div></div>
-          <div class="stat-box"><div class="stat-val">~50%</div><div class="stat-label">redução reserva torque</div></div>
-          <div class="stat-box"><div class="stat-val">10s</div><div class="stat-label">janela de assistência</div></div>
-          <div class="stat-box"><div class="stat-val">300V</div><div class="stat-label">barramento elétrico</div></div>
-        </div>
+  <section class="hero" style="min-height:auto;padding:8rem 2rem 5rem">
+    <div style="max-width:780px;margin:0 auto;text-align:center">
+      <div class="hero-tag">Centro Universitário FEI · TCC 2026</div>
+      <h1 style="font-family:var(--font-head);font-size:clamp(2rem,4vw,3.2rem);font-weight:800;line-height:1.1;letter-spacing:-1.5px;color:var(--text);margin-bottom:1.5rem">Hibridização <span style="color:var(--green)">Leve P1</span> para Tratores Agrícolas</h1>
+      <p style="font-size:16px;color:var(--text2);line-height:1.8;margin-bottom:1rem;max-width:660px;margin-left:auto;margin-right:auto">
+        Este trabalho apresenta o estudo e a modelagem do comportamento de um trator agrícola em diferentes condições de operação, com o objetivo de compreender sua influência no consumo de combustível e investigar possíveis formas de redução.
+      </p>
+      <p style="font-size:16px;color:var(--text2);line-height:1.8;margin-bottom:1rem;max-width:660px;margin-left:auto;margin-right:auto">
+        O estudo parte da identificação de uma característica comum em tratores convencionais: a necessidade de elevadas <strong style="color:var(--green-dark)">reservas de torque</strong> para garantir desempenho em condições variáveis de solo e carga, resultando em maior consumo e aumento das emissões.
+      </p>
+      <p style="font-size:16px;color:var(--text2);line-height:1.8;margin-bottom:1rem;max-width:660px;margin-left:auto;margin-right:auto">
+        Com base na análise de soluções como CVT, Power Boost, turbo de geometria variável e eletrificação, o trabalho propõe uma abordagem para <strong style="color:var(--green-dark)">identificar automaticamente o aumento das forças resistivas</strong> usando sensores de rotação e posição do pedal.
+      </p>
+      <p style="font-size:16px;color:var(--text2);line-height:1.8;margin-bottom:2.5rem;max-width:660px;margin-left:auto;margin-right:auto">
+        Modelos dinâmicos foram desenvolvidos para comparar tratores convencionais com o modelo proposto, contribuindo para estratégias que <strong style="color:var(--green-dark)">reduzam a reserva de torque, melhorem a eficiência energética e diminuam o consumo</strong> nas operações agrícolas.
+      </p>
+      <div class="hero-ctas" style="justify-content:center">
+        <button class="btn btn-primary" onclick="switchTab('tecnico',document.querySelectorAll('.nav-tab')[1])">Ver Parte Técnica</button>
+        <a href="#contexto" class="btn btn-outline">Saiba Mais</a>
       </div>
     </div>
   </section>
@@ -449,21 +474,39 @@
         <div class="vant-card fade-in fade-in-delay-2"><div class="vant-icon">🚜</div><h3>Mesma Produtividade</h3><p>A força tratativa é mantida ou aumentada — o operador não percebe diferença na capacidade de trabalho no campo.</p></div>
         <div class="vant-card fade-in fade-in-delay-3"><div class="vant-icon">🔋</div><h3>Bateria LFP Durável</h3><p>Células lítio-ferro-fosfato com alta estabilidade térmica, longa vida útil e segurança para operação rural severa.</p></div>
       </div>
+    </div>
+  </section>
 
-      <div style="margin-top:4rem">
-        <div class="section-tag">Golden Circle</div>
-        <h2 class="section-title" style="margin-bottom:0">Propósito do Projeto</h2>
+  <section id="resultados" class="bg-white">
+    <div class="container">
+      <div class="section-tag">Resultados esperados</div>
+      <h2 class="section-title">O que o projeto entrega</h2>
+      <p class="section-sub">Com a assistência elétrica absorvendo os picos transitórios, espera-se uma melhoria significativa no comportamento dinâmico e na eficiência do powertrain.</p>
+      <div class="result-grid">
+        <div class="result-card fade-in fade-in-delay-1"><div class="result-icon">📉</div><h3>Menor queda de rotação</h3><p>A amplitude das quedas de rotação durante picos de carga é reduzida, mantendo o motor na faixa de trabalho desejável.</p></div>
+        <div class="result-card fade-in fade-in-delay-2"><div class="result-icon">⛽</div><h3>Menos consumo de combustível</h3><p>O ponto médio de operação se desloca para regiões de menor BSFC, reduzindo o consumo total para a mesma tarefa agrícola.</p></div>
+        <div class="result-card fade-in fade-in-delay-3"><div class="result-icon">🌿</div><h3>Redução de emissões</h3><p>O menor consumo médio impacta diretamente nas emissões de CO₂ e poluentes por hora de trabalho no campo.</p></div>
+        <div class="result-card fade-in fade-in-delay-1"><div class="result-icon">🔋</div><h3>Menor reserva de torque</h3><p>Com a assistência elétrica disponível, o motor diesel pode ser calibrado com menor margem dinâmica — de 25–30% para ~13–15%.</p></div>
       </div>
+    </div>
+  </section>
+
+  <section id="golden" class="bg-off">
+    <div class="container">
+      <div class="section-tag">Golden Circle</div>
+      <h2 class="section-title">Propósito do Projeto</h2>
       <div class="gc-grid">
         <div class="gc-card why"><div class="gc-label">Por quê?</div><h3>Nosso Propósito</h3><p>Acreditamos em um agronegócio comprometido com o futuro, promovendo qualidade de vida para as próximas gerações.</p></div>
         <div class="gc-card how"><div class="gc-label">Como?</div><h3>Nossa Abordagem</h3><p>Integrando um sistema inteligente que garanta resposta imediata do motor em condições de alta exigência no campo.</p></div>
         <div class="gc-card what"><div class="gc-label">O quê?</div><h3>Nossa Entrega</h3><p>Um sistema híbrido leve P1 para tratores com menor consumo, menos emissões e mesma força tratativa.</p></div>
       </div>
+    </div>
+  </section>
 
-      <div style="margin-top:4rem">
-        <div class="section-tag">Modelo de Negócio</div>
-        <h2 class="section-title" style="margin-bottom:0">Business Model Canvas</h2>
-      </div>
+  <section id="bmc" class="bg-white">
+    <div class="container">
+      <div class="section-tag">Modelo de Negócio</div>
+      <h2 class="section-title">Business Model Canvas</h2>
       <div class="bmc-grid">
         <div class="bmc-card"><div class="bmc-label">Parceiros-chave</div><p>Empresas de software, ferramentaria, montagem e produção. Fornecedores de tratores, motores elétricos e sistemas automotivos.</p></div>
         <div class="bmc-card"><div class="bmc-label">Atividades-chave</div><p>Desenvolvimento de proposta, montagem de protótipos, teste, validação, homologação e vendas.</p></div>
@@ -555,6 +598,20 @@
       <div style="margin-top:3rem">
         <div class="section-tag">Engenharia reversa</div>
         <h3 style="font-family:var(--font-head);font-size:1.4rem;font-weight:800;margin-bottom:.5rem;color:var(--text)">Componentes do Sistema</h3>
+      </div>
+      <div style="background:var(--white);border-radius:var(--r2);padding:2rem;border:1px solid #e0ddd5;margin-bottom:2rem">
+        <div class="spec-title">Topologia P1 — Diagrama do Powertrain</div>
+        <div class="p-row"><div class="p-node active">Motor Diesel</div><div class="p-arrow">⚡</div><div class="p-node active">Motor Elétrico P1</div></div>
+        <div class="p-hint" style="color:var(--text2)">acoplado ao virabrequim</div>
+        <div class="p-row"><div class="p-node" style="flex:2">Transmissão</div><div class="p-arrow">→</div><div class="p-node">Eixo / PTO</div></div>
+        <div class="p-hint" style="color:var(--text2)">força motriz combinada</div>
+        <div class="p-row"><div class="p-node">Bateria LFP<br><small style="font-size:9px;font-weight:400">300V</small></div><div class="p-arrow">→</div><div class="p-node">Inversor<br><small style="font-size:9px;font-weight:400">15kW</small></div><div class="p-arrow">→</div><div class="p-node active">ECU<br><small style="font-size:9px;font-weight:400">Controle</small></div></div>
+        <div class="stats-row" style="margin-top:1.5rem">
+          <div class="stat-box"><div class="stat-val">45</div><div class="stat-label">Nm torque assistivo</div></div>
+          <div class="stat-box"><div class="stat-val">~50%</div><div class="stat-label">redução reserva torque</div></div>
+          <div class="stat-box"><div class="stat-val">10s</div><div class="stat-label">janela de assistência</div></div>
+          <div class="stat-box"><div class="stat-val">300V</div><div class="stat-label">barramento elétrico</div></div>
+        </div>
       </div>
       <div class="comp-grid">
         <div class="comp-card"><div class="comp-icon">🔋</div><div class="comp-name">Bateria LFP</div><div class="comp-detail">80 kg · 800×500×250 mm<br>BYD / CATL / LG<br>Eixo traseiro/chassi</div></div>
@@ -669,6 +726,18 @@
 
   <section id="fmea" class="bg-white">
     <div class="container">
+
+      <div class="section-tag">Normas aplicáveis</div>
+      <h2 class="section-title">Normas Técnicas</h2>
+      <p class="section-sub">O projeto foi desenvolvido em conformidade com as normas brasileiras e internacionais aplicáveis a tratores agrícolas.</p>
+      <div class="normas-grid">
+        <div class="norma-card fade-in fade-in-delay-1"><div class="norma-code">ABNT NBR ISO 500</div><div class="norma-desc">Define dimensões, velocidade e características de operação de tratores agrícolas.</div></div>
+        <div class="norma-card fade-in fade-in-delay-2"><div class="norma-code">ABNT NBR ISO 789-1</div><div class="norma-desc">Estabelece procedimentos para medição da potência disponível no motor.</div></div>
+        <div class="norma-card fade-in fade-in-delay-3"><div class="norma-code">ABNT NBR NM ISO 4254-1</div><div class="norma-desc">Inclui requisitos de segurança para o uso da Tomada de Potência (PTO).</div></div>
+        <div class="norma-card fade-in fade-in-delay-4"><div class="norma-code">ABNT NBR 10989</div><div class="norma-desc">Foca na proteção contra acidentes envolvendo a Tomada de Potência (TDP).</div></div>
+      </div>
+
+      <div style="margin-top:4rem">
       <div class="section-tag">Análise de riscos</div>
       <h2 class="section-title">FMEA — Modos de Falha e Efeitos</h2>
       <p class="section-sub">Análise dos principais riscos com índices de severidade, ocorrência, detecção e ações recomendadas.</p>
@@ -685,8 +754,9 @@
         </table>
       </div>
 
+      </div><!-- /fmea inner -->
+
       <div style="margin-top:4rem">
-        <div class="section-tag">Estágio atual</div>
         <h2 class="section-title" style="margin-bottom:0">Cronograma do Projeto</h2>
       </div>
       <div class="timeline">
@@ -704,6 +774,8 @@
 </div>
 
 </div><!-- /main-content -->
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <footer>
   <div class="container">
@@ -818,6 +890,11 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 
 document.getElementById('tab-intro').style.opacity = '1';
+
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('backTop');
+  if (btn) btn.classList.toggle('visible', window.scrollY > 400);
+});
 </script>
 </body>
 </html>
