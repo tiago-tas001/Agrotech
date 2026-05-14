@@ -27,7 +27,7 @@ html{scroll-behavior:smooth}
 body{font-family:var(--font-body);color:var(--text);background:var(--off);line-height:1.6}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(249,248,245,0.96);backdrop-filter:blur(12px);border-bottom:1px solid #e0ddd5;padding:0 2rem;display:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(249,248,245,0.96);backdrop-filter:blur(12px);border-bottom:1px solid #e0ddd5;padding:0 2rem}
 .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;height:64px;gap:2rem}
 .nav-logo{flex-shrink:0;margin-right:auto}
 .nav-logo img{height:44px;width:auto}
@@ -35,9 +35,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(249,248,245,
 .nav-tab{padding:8px 22px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--text2);transition:all .2s;white-space:nowrap}
 .nav-tab.active{background:var(--green);color:#fff;box-shadow:0 2px 8px rgba(29,158,117,0.3)}
 .nav-tab:hover:not(.active){background:rgba(29,158,117,0.08);color:var(--green)}
-.nav-sub{display:flex;gap:1.5rem;list-style:none}
-.nav-sub a{font-size:12px;font-weight:500;color:var(--text2);text-decoration:none;transition:color .2s}
-.nav-sub a:hover{color:var(--green)}
 .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:transparent}
 .nav-hamburger span{width:22px;height:2px;background:var(--green-dark);border-radius:2px;transition:all .3s}
 .nav-hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
@@ -49,27 +46,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(249,248,245,
 .nav-mobile-menu a:last-child{border-bottom:none}
 .nav-mobile-tabs{display:flex;gap:6px;margin-bottom:.5rem}
 
+/* ── SUB-NAV BARRA DE SEÇÕES ── */
+.subnav{position:fixed;top:64px;left:0;right:0;z-index:99;background:rgba(249,248,245,0.97);backdrop-filter:blur(10px);border-bottom:1px solid #e8e5de;overflow-x:auto;scrollbar-width:none}
+.subnav::-webkit-scrollbar{display:none}
+.subnav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:0;padding:0 2rem;white-space:nowrap}
+.subnav-link{display:inline-flex;align-items:center;padding:10px 16px;font-size:12px;font-weight:500;color:var(--text2);text-decoration:none;border-bottom:2px solid transparent;transition:all .2s;cursor:pointer;white-space:nowrap;border-top:none;border-left:none;border-right:none;background:transparent}
+.subnav-link:hover{color:var(--green);background:rgba(29,158,117,0.04)}
+.subnav-link.active{color:var(--green-dark);font-weight:700;border-bottom-color:var(--green)}
+.subnav-sep{width:1px;height:14px;background:#e0ddd5;flex-shrink:0;margin:0 4px}
+body{padding-top:104px}
+
 /* ── TABS ── */
 @keyframes fadeInTab{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 .tab-content{display:none;opacity:0}
 .tab-content.active{display:block;animation:fadeInTab .3s ease forwards}
-
-/* ── LANDING ── */
-.landing{min-height:100vh;background:var(--green-dark);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4rem 2rem;text-align:center;position:relative;overflow:hidden}
-.landing::before{content:'';position:absolute;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(93,202,165,0.07),transparent 65%);top:-200px;left:50%;transform:translateX(-50%);pointer-events:none}
-.land-logo{margin-bottom:2.5rem}
-.land-logo img{height:200px;width:auto;filter:brightness(0) invert(1)}
-.land-pill{display:inline-block;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green-mid);background:rgba(93,202,165,0.1);border:1px solid rgba(93,202,165,0.2);padding:6px 16px;border-radius:100px;margin-bottom:2rem}
-.land-title{font-family:var(--font-head);font-size:clamp(1.6rem,4vw,3rem);font-weight:800;color:#fff;line-height:1.15;letter-spacing:-1px;max-width:720px;margin:0 auto 1.5rem}
-.land-title span{color:var(--green-mid)}
-.land-desc{font-size:clamp(15px,2vw,17px);color:rgba(255,255,255,0.65);line-height:1.75;max-width:560px;margin:0 auto 3rem}
-.land-stats{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-bottom:3rem}
-.land-stat{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r);padding:1rem 1.5rem;min-width:120px}
-.land-stat-val{font-family:var(--font-head);font-size:1.6rem;font-weight:800;color:#fff;line-height:1}
-.land-stat-label{font-size:11px;color:rgba(255,255,255,0.5);margin-top:4px;font-weight:500}
-.land-btn{background:var(--green);color:#fff;padding:15px 40px;border-radius:100px;font-size:15px;font-weight:700;font-family:var(--font-head);border:none;cursor:pointer;transition:all .25s;letter-spacing:-.3px}
-.land-btn:hover{background:var(--green-mid);transform:translateY(-2px)}
-.land-scroll{margin-top:2rem;font-size:10px;color:rgba(255,255,255,0.25);letter-spacing:1.5px;text-transform:uppercase}
 
 /* ── BACK TO TOP ── */
 .back-top{position:fixed;bottom:2rem;right:2rem;width:44px;height:44px;border-radius:50%;background:var(--green);color:#fff;border:none;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(29,158,117,0.4);opacity:0;transform:translateY(10px);transition:all .3s;z-index:200}
@@ -342,16 +332,18 @@ footer p{font-size:13px;line-height:1.7}
 @media(max-width:900px){
   .problem-layout,.sol-grid,.target-layout,.cost-layout,.context-grid,.gc-grid,.vant-grid,.story-grid{grid-template-columns:1fr}
   .bench-grid,.comp-grid,.team-grid,.result-grid{grid-template-columns:1fr 1fr}
-  .nav-sub{display:none}
-  .nav-hamburger{display:flex}
-  .nav-tabs{display:none}
-  .hero-full{padding:7rem 2rem 4rem}
+  .hero-full{padding:5rem 2rem 3rem}
+  .subnav-inner{padding:0 1rem}
+  .subnav-link{padding:10px 11px;font-size:11px}
+  .nav-tab{padding:8px 14px;font-size:12px}
 }
 @media(max-width:600px){
   .bench-grid,.comp-grid,.team-grid,.target-numbers,.stats-row,.bmc-grid,.gc-grid,.result-grid,.normas-grid{grid-template-columns:1fr}
   .bmc-full{grid-column:1}
-  .hero-full{padding:6rem 1.5rem 3rem}
-  .land-stats{flex-direction:column;align-items:center}
+  .hero-full{padding:4rem 1.5rem 3rem}
+  body{padding-top:100px}
+  .nav-logo img{height:32px}
+  .nav-tab{padding:7px 12px;font-size:11px}
 }
 </style>
 </head>
@@ -366,31 +358,21 @@ footer p{font-size:13px;line-height:1.7}
       <button class="nav-tab" onclick="switchTab('intro',this)">Introdução</button>
       <button class="nav-tab" onclick="switchTab('tecnico',this)">Técnico</button>
     </div>
-    <ul class="nav-sub" id="sub-inicio">
-      <li><a href="#home-story">O Projeto</a></li>
-      <li><a href="#home-nums">Números</a></li>
-      <li><a href="#home-time">Progresso</a></li>
-    </ul>
-    <ul class="nav-sub" id="sub-intro" style="display:none">
-      <li><a href="#contexto">Contexto</a></li>
-      <li><a href="#problema">Problema</a></li>
-      <li><a href="#proposta">Proposta</a></li>
-      <li><a href="#storyboard">Story Board</a></li>
-      <li><a href="#equipe">Equipe</a></li>
-    </ul>
-    <ul class="nav-sub" id="sub-tecnico" style="display:none">
-      <li><a href="#specs">Specs</a></li>
-      <li><a href="#benchmarking">Benchmark</a></li>
-      <li><a href="#target">Target</a></li>
-      <li><a href="#resultados-sim">Resultados</a></li>
-      <li><a href="#custos">Custos</a></li>
-      <li><a href="#fmea">FMEA</a></li>
-    </ul>
-    <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+    <ul class="nav-sub" id="sub-inicio" style="display:none"></ul>
+    <ul class="nav-sub" id="sub-intro" style="display:none"></ul>
+    <ul class="nav-sub" id="sub-tecnico" style="display:none"></ul>
+    <button class="nav-hamburger" id="hamburger" style="display:none">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
+
+<!-- BARRA DE SEÇÕES -->
+<div class="subnav" id="subnav">
+  <div class="subnav-inner" id="subnav-inner">
+    <!-- preenchida via JS conforme aba ativa -->
+  </div>
+</div>
 
 <div class="nav-mobile-menu" id="mobile-menu">
   <div class="nav-mobile-tabs">
@@ -414,8 +396,173 @@ footer p{font-size:13px;line-height:1.7}
 <!-- ═══ CONTEÚDO PRINCIPAL ═══ -->
 <div id="main-content">
 
+
+<!-- ══ ABA INÍCIO ══ -->
+<div id="tab-inicio" class="tab-content active">
+
+  <!-- HERO INÍCIO -->
+  <section style="min-height:calc(100vh - 64px);display:flex;align-items:center;background:linear-gradient(160deg,var(--green-dark) 0%,#0d6b52 60%,#1D9E75 100%);padding:5rem 2rem;position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(93,202,165,0.12),transparent 65%);pointer-events:none"></div>
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:4rem;align-items:center;width:100%;position:relative;z-index:1">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);padding:6px 14px;border-radius:100px;margin-bottom:2rem">
+          <img src="logo.png" alt="" style="height:20px;filter:brightness(0) invert(1);opacity:.8">
+          <span style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.7)">Centro Universitário FEI · 2026</span>
+        </div>
+        <h1 style="font-family:var(--font-head);font-size:clamp(2rem,4vw,3.2rem);font-weight:800;line-height:1.1;letter-spacing:-1.5px;color:#fff;margin-bottom:1.5rem">Necessidade de Reserva de Torque <span style="color:var(--green-mid)">em Motores Agrícolas</span></h1>
+        <p style="font-size:16px;color:rgba(255,255,255,0.65);line-height:1.75;margin-bottom:2rem;max-width:480px">Trabalho de conclusão de curso de Engenharia Mecânica. Investigamos por que tratores consomem mais combustível do que precisam — e propusemos uma solução híbrida.</p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">
+          <button class="btn" style="background:var(--green-mid);color:var(--green-dark);font-weight:700" onclick="switchTabByName('intro')">Ver Introdução</button>
+          <button class="btn" style="background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.3)" onclick="switchTabByName('tecnico')">Parte Técnica</button>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1rem">
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r2);padding:1.5rem">
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green-mid);margin-bottom:1rem">Proposta central</div>
+          <p style="font-size:14px;color:rgba(255,255,255,0.8);line-height:1.7">A reserva de torque pode ser reduzida se um motor elétrico P1 fornecer torque instantâneo nos picos de carga, liberando o diesel para operar na faixa mais eficiente.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
+          <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r);padding:1.25rem;text-align:center">
+            <div style="font-family:var(--font-head);font-size:1.8rem;font-weight:800;color:#fff;letter-spacing:-1px">13,05</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:3px">L/h sem híbrido</div>
+          </div>
+          <div style="background:rgba(29,158,117,0.2);border:1px solid rgba(93,202,165,0.3);border-radius:var(--r);padding:1.25rem;text-align:center">
+            <div style="font-family:var(--font-head);font-size:1.8rem;font-weight:800;color:var(--green-mid);letter-spacing:-1px">12,59</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.55);margin-top:3px">L/h com híbrido P1</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r);padding:1.25rem;text-align:center">
+            <div style="font-family:var(--font-head);font-size:1.8rem;font-weight:800;color:#fff;letter-spacing:-1px">85 Nm</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:3px">pico elétrico simulado</div>
+          </div>
+          <div style="background:rgba(29,158,117,0.2);border:1px solid rgba(93,202,165,0.3);border-radius:var(--r);padding:1.25rem;text-align:center">
+            <div style="font-family:var(--font-head);font-size:1.8rem;font-weight:800;color:var(--green-mid);letter-spacing:-1px">−3,5%</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.55);margin-top:3px">redução de consumo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 ATOS RÁPIDOS -->
+  <section id="home-story" class="bg-white">
+    <div class="container">
+      <div class="section-tag">A tese em 3 atos</div>
+      <h2 class="section-title">O coração do projeto</h2>
+      <div class="story-grid" style="margin-top:2rem">
+        <div class="story-card problem fade-in fade-in-delay-1">
+          <div class="story-step">O problema</div>
+          <div class="story-icon">🚜</div>
+          <h3>Motor sobredimensionado para o pior caso</h3>
+          <p>O solo é imprevisível. Picos de resistência forçam fabricantes a usar motores com 25–30% de torque "a mais" — que quase nunca é necessário no regime médio.</p>
+        </div>
+        <div class="story-card cause fade-in fade-in-delay-2">
+          <div class="story-step">A causa</div>
+          <div class="story-icon">⏱️</div>
+          <h3>Diesel não responde rápido o suficiente</h3>
+          <p>Aumentar torque no motor a diesel depende de combustão, turbo e injeção. Esse atraso obriga o dimensionamento para transientes raros — não para o trabalho contínuo.</p>
+        </div>
+        <div class="story-card solution fade-in fade-in-delay-3">
+          <div class="story-step">A solução</div>
+          <div class="story-icon">⚡</div>
+          <h3>Motor elétrico P1 age em milissegundos</h3>
+          <p>Acoplado ao virabrequim, o motor elétrico detecta o pico via sensores e entrega torque instantâneo. O diesel opera na faixa eficiente — menos consumo, mesma produtividade.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:2rem">
+        <button class="btn btn-outline" onclick="switchTabByName('intro')">Aprofundar na Introdução →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- NÚMEROS REAIS -->
+  <section id="home-nums" class="bg-off">
+    <div class="container">
+      <div class="section-tag">Resultados da simulação</div>
+      <h2 class="section-title">Números reais — AVL Cruise M</h2>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-top:2rem">
+        <div class="ctx-card fade-in fade-in-delay-1" style="text-align:center">
+          <div class="ctx-icon">⛽</div>
+          <div class="ctx-num" style="font-size:1.8rem">13,05 → 12,59</div>
+          <div class="ctx-desc">L/h · redução de 3,5% no consumo de combustível</div>
+        </div>
+        <div class="ctx-card fade-in fade-in-delay-2" style="text-align:center">
+          <div class="ctx-icon">⚡</div>
+          <div class="ctx-num" style="font-size:2rem">85 Nm</div>
+          <div class="ctx-desc">pico de assistência elétrica durante aclives de até 15%</div>
+        </div>
+        <div class="ctx-card fade-in fade-in-delay-3" style="text-align:center">
+          <div class="ctx-icon">🎯</div>
+          <div class="ctx-num" style="font-size:2rem">45 Nm</div>
+          <div class="ctx-desc">torque assistivo de projeto dimensionado para o sistema</div>
+        </div>
+        <div class="ctx-card fade-in fade-in-delay-4" style="text-align:center">
+          <div class="ctx-icon">🔋</div>
+          <div class="ctx-num" style="font-size:2rem">300 V</div>
+          <div class="ctx-desc">barramento LFP · 72s8p · seguro e durável para uso rural</div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:2rem">
+        <button class="btn btn-primary" onclick="switchTabByName('tecnico')">Ver todos os dados técnicos →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRESSO DO PROJETO -->
+  <section id="home-time" class="bg-white">
+    <div class="container" style="max-width:760px">
+      <div class="section-tag">Onde estamos</div>
+      <h2 class="section-title">Progresso do projeto</h2>
+      <div style="margin-top:2rem;display:flex;flex-direction:column;gap:0">
+        <div style="display:flex;align-items:center;gap:1.25rem;padding:1rem 0;border-bottom:1px solid var(--gray-light)">
+          <div style="width:32px;height:32px;border-radius:50%;background:var(--green-dark);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">✓</div>
+          <div><div style="font-size:14px;font-weight:600;color:var(--text)">Fundamentação, benchmarking e matriz de decisão</div><div style="font-size:12px;color:var(--text2)">Seleção da topologia P1 · Análise de 6 tecnologias</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:1.25rem;padding:1rem 0;border-bottom:1px solid var(--gray-light)">
+          <div style="width:32px;height:32px;border-radius:50%;background:var(--green-dark);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">✓</div>
+          <div><div style="font-size:14px;font-weight:600;color:var(--text)">Engenharia reversa, dimensionamento e FMEA</div><div style="font-size:12px;color:var(--text2)">Custo R$31.426 · Componentes especificados · Business Model Canvas</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:1.25rem;padding:1rem 0;border-bottom:1px solid var(--gray-light)">
+          <div style="width:32px;height:32px;border-radius:50%;background:var(--green-dark);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">✓</div>
+          <div><div style="font-size:14px;font-weight:600;color:var(--text)">Desenhos 2D, modelagem 3D e simulação AVL Cruise M</div><div style="font-size:12px;color:var(--text2)">Resultados: −3,5% consumo · 85 Nm elétrico no pico</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:1.25rem;padding:1rem 0;border-bottom:1px solid var(--gray-light)">
+          <div style="width:32px;height:32px;border-radius:50%;background:var(--green-dark);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">✓</div>
+          <div><div style="font-size:14px;font-weight:600;color:var(--text)">Protótipo físico construído</div><div style="font-size:12px;color:var(--text2)">Bancada de testes com motor elétrico e mecânico integrados</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:1.25rem;padding:1rem 0">
+          <div style="width:32px;height:32px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;animation:pulse 1.5s infinite">▶</div>
+          <div><div style="font-size:14px;font-weight:600;color:var(--amber)">Redação final e apresentação para bancas</div><div style="font-size:12px;color:var(--text2)">Consolidação dos resultados · Entrega do TCC</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EQUIPE RÁPIDA -->
+  <section class="bg-off" style="padding:4rem 2rem">
+    <div class="container">
+      <div class="section-tag">O time</div>
+      <h2 class="section-title">Equipe AgroTech</h2>
+      <div class="team-grid" style="margin-top:1.5rem">
+        <div class="team-card fade-in fade-in-delay-1"><div class="team-avatar">JG</div><div class="team-name">João Vitor Bertani Gibrail</div><div class="team-role">Líder</div><a href="https://www.linkedin.com/in/jo%C3%A3o-vitor-gibrail-aab182252" target="_blank" class="team-linkedin">LinkedIn →</a></div>
+        <div class="team-card fade-in fade-in-delay-2"><div class="team-avatar">AT</div><div class="team-name">Ana Júlia Bastos Trizzi</div><div class="team-role">Pesquisa e Desenvolvimento</div><a href="https://www.linkedin.com/in/anajuliabastostrizzi" target="_blank" class="team-linkedin">LinkedIn →</a></div>
+        <div class="team-card fade-in fade-in-delay-3"><div class="team-avatar">TS</div><div class="team-name">Tiago Andrade Santos</div><div class="team-role">Ferramentas de Projeto</div><a href="https://www.linkedin.com/in/tiago-andrade-484a34254" target="_blank" class="team-linkedin">LinkedIn →</a></div>
+        <div class="team-card fade-in fade-in-delay-4"><div class="team-avatar">WP</div><div class="team-name">William José Piva D'Assunção</div><div class="team-role">Pesquisa e Desenvolvimento</div><a href="https://www.linkedin.com/in/william-piva-8b0624192" target="_blank" class="team-linkedin">LinkedIn →</a></div>
+        <div class="team-card fade-in fade-in-delay-5"><div class="team-avatar">JU</div><div class="team-name">João Vitor Uriarte</div><div class="team-role">CAD e Simulação</div><a href="https://www.linkedin.com/in/jo%C3%A3o-vitor-uriarte-b80682385" target="_blank" class="team-linkedin">LinkedIn →</a></div>
+      </div>
+      <div style="text-align:center;margin-top:1.25rem">
+        <div class="team-card" style="display:inline-block;min-width:200px">
+          <div class="team-avatar" style="background:var(--amber-light);color:var(--amber)">CG</div>
+          <div class="team-name">Cléber Willian Gomes</div>
+          <div class="team-role orient">Orientador</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /tab-inicio -->
+
 <!-- ══ ABA INTRODUÇÃO ══ -->
-<div id="tab-intro" class="tab-content active">
+<div id="tab-intro" class="tab-content">
 
   <!-- HERO -->
   <section class="hero-full">
@@ -992,14 +1139,77 @@ footer p{font-size:13px;line-height:1.7}
 </footer>
 
 <script>
-function enterSite() {
-  document.getElementById('landing').style.display = 'none';
-  document.getElementById('main-content').style.display = 'block';
-  document.getElementById('mainNav').style.display = 'block';
-  document.getElementById('mobile-menu').style.display = '';
-  window.scrollTo({ top: 0 });
-  requestAnimationFrame(() => setTimeout(initObserver, 120));
-  document.getElementById('btnVerTecnico').addEventListener('click', () => switchTabByName('tecnico'));
+const SUBNAV = {
+  inicio: [
+    { label: 'Início', href: '#' },
+    { label: 'O Projeto', href: '#home-story' },
+    { label: 'Números', href: '#home-nums' },
+    { label: 'Progresso', href: '#home-time' },
+    { label: 'Equipe', href: '#home-equipe' },
+  ],
+  intro: [
+    { label: 'Introdução', href: '#' },
+    { label: 'Contexto', href: '#contexto' },
+    { label: 'Problema', href: '#problema' },
+    { label: 'Proposta', href: '#proposta' },
+    { label: 'Story Board', href: '#storyboard' },
+    { label: 'Resultados', href: '#resultados' },
+    { label: 'Golden Circle', href: '#golden' },
+    { label: 'Canvas', href: '#bmc' },
+    { label: 'Equipe', href: '#equipe' },
+  ],
+  tecnico: [
+    { label: 'Técnico', href: '#' },
+    { label: 'Specs', href: '#specs' },
+    { label: 'Benchmarking', href: '#benchmarking' },
+    { label: 'Target', href: '#target' },
+    { label: 'Resultados', href: '#resultados-sim' },
+    { label: 'Protótipo', href: '#prototipo' },
+    { label: 'Custos', href: '#custos' },
+    { label: 'Normas', href: '#fmea' },
+    { label: 'FMEA', href: '#fmea' },
+    { label: 'Cronograma', href: '#cronograma' },
+  ],
+};
+
+function renderSubnav(tab) {
+  const inner = document.getElementById('subnav-inner');
+  const links = SUBNAV[tab] || [];
+  inner.innerHTML = links.map((l, i) =>
+    (i === 0
+      ? `<span class="subnav-link" style="color:var(--green-dark);font-weight:700;opacity:.5;cursor:default">${l.label}</span><div class="subnav-sep"></div>`
+      : `<a class="subnav-link" href="${l.href}">${l.label}</a>`)
+  ).join('');
+
+  // Smooth scroll for subnav links
+  inner.querySelectorAll('a.subnav-link').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const href = a.getAttribute('href');
+      if (href === '#') { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+      const target = document.querySelector(href);
+      if (target) {
+        const offset = 110; // nav + subnav height
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+}
+
+// Highlight active subnav link on scroll
+function updateSubnavActive() {
+  const links = document.querySelectorAll('#subnav-inner a.subnav-link');
+  let current = '';
+  links.forEach(a => {
+    const href = a.getAttribute('href');
+    if (href === '#') return;
+    const el = document.querySelector(href);
+    if (el && el.getBoundingClientRect().top <= 130) current = href;
+  });
+  links.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === current);
+  });
 }
 
 function toggleMenu() {
@@ -1017,14 +1227,12 @@ function switchTabByName(tab) {
 function switchTab(tab, btn) {
   document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
-  document.getElementById('sub-intro').style.display = 'none';
-  document.getElementById('sub-tecnico').style.display = 'none';
   document.getElementById('tab-' + tab).classList.add('active');
   if (btn) btn.classList.add('active');
   document.querySelectorAll('.nav-tabs .nav-tab').forEach(b => {
     if (b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + tab + "'")) b.classList.add('active');
   });
-  document.getElementById('sub-' + tab).style.display = 'flex';
+  renderSubnav(tab);
   window.scrollTo({ top: 0, behavior: 'smooth' });
   requestAnimationFrame(() => setTimeout(initObserver, 120));
 }
@@ -1090,19 +1298,17 @@ function initObserver() {
   document.querySelectorAll('.torque-chart').forEach(el => bio.observe(el));
 }
 
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    const t = document.querySelector(a.getAttribute('href'));
-    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    const m = document.getElementById('mobile-menu');
-    if (m.classList.contains('open')) toggleMenu();
-  });
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('btnVerTecnico');
+  if (btn) btn.addEventListener('click', () => switchTabByName('tecnico'));
+  renderSubnav('inicio');
+  setTimeout(initObserver, 200);
 });
 
 window.addEventListener('scroll', () => {
-  const btn = document.getElementById('backTop');
-  if (btn) btn.classList.toggle('visible', window.scrollY > 400);
+  const backBtn = document.getElementById('backTop');
+  if (backBtn) backBtn.classList.toggle('visible', window.scrollY > 400);
+  updateSubnavActive();
 });
 </script>
 </body>
